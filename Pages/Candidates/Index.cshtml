@@ -1,0 +1,54 @@
+@page
+@model candidate.Pages_Candidates.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidate[0].Last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidate[0].First)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidate[0].AnnounceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidate[0].Party)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Candidate) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Last)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.First)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Party)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
